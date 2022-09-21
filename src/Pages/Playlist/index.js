@@ -1,18 +1,18 @@
 import React from "react";
 import { useNavigate, useParams } from "react-router";
 
-import useFecth from "../../hooks/useFecth";
+import useFecth from "../../Hooks/useFecth";
 import { GET_PLAYLIST } from "../../services/api";
 import { PlaylistContext } from "../../store/PlaylistContext";
 
 import Header from "./Header";
-import Loader from "../../components/Loader";
+import Loader from "../../Components/Loader";
 import Information from "./Information";
 import MusicList from "./MusicList";
 
 import styles from './index.module.css';
 import { UserContext } from "../../store/UserContext";
-import useInformationPage from "../../hooks/useInformationPage";
+import useInformationPage from "../../Hooks/useInformationPage";
 
 const Playlist = () => {
   const { id } = useParams();

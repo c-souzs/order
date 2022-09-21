@@ -1,12 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router";
 
-import useFecth from "../../../hooks/useFecth";
+import useFecth from "../../../Hooks/useFecth";
 import { PUT_ORDER_PLAYLIST } from "../../../services/api";
 import { PlaylistContext } from "../../../store/PlaylistContext";
 
-import ErrorToast from "../../../components/ErrorToast";
-import Loader from "../../../components/Loader";
+import ErrorToast from "../../../Components/ErrorToast";
+import Loader from "../../../Components/Loader";
 
 import styles from "./index.module.css";
 

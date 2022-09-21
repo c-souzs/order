@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router";
 
-import useFecth from "../hooks/useFecth";
+import useFecth from "../Hooks/useFecth";
 import { GET_USER } from "../services/api";
 
 export const UserContext = React.createContext();

@@ -3,14 +3,14 @@ import React from "react";
 import { REDIRECT_URL_TOKEN } from "../../services/api";
 import { UserContext } from "../../store/UserContext";
 
-import Loader from "../../components/Loader";
-import ErrorToast from "../../components/ErrorToast";
+import Loader from "../../Components/Loader";
+import ErrorToast from "../../Components/ErrorToast";
 
 import logo from "../../assets/logo.svg";
 import iconButton from "../../assets/icon-button.svg";
 
 import styles from "./index.module.css";
-import useInformationPage from "../../hooks/useInformationPage";
+import useInformationPage from "../../Hooks/useInformationPage";
 
 const Login = () => {
     const { error, loading } = React.useContext(UserContext);

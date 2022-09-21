@@ -1,11 +1,11 @@
 import React from "react";
 import { Route, Routes } from "react-router";
 import "./App.css";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
-import Login from "./pages/Login";
-import RouteProtection from "./pages/MyPlaylists/RouteProtection";
-import Playlist from "./pages/Playlist";
+import Footer from "./Components/Footer";
+import Header from "./Components/Header";
+import Login from "./Pages/Login";
+import RouteProtection from "./Pages/MyPlaylists/RouteProtection";
+import Playlist from "./Pages/Playlist";
 import { PlaylistStorage } from "./store/PlaylistContext";
 import { UserContext } from "./store/UserContext";
 

@@ -1,15 +1,14 @@
 import React from "react";
 
-import useFecth from "../../../hooks/useFecth";
+import useFecth from "../../../Hooks/useFecth";
 import { GET_MUSICS } from "../../../services/api";
 import { PlaylistContext } from "../../../store/PlaylistContext";
 
-import Loader from "../../../components/Loader";
+import Loader from "../../../Components/Loader";
 import MusicItem from "../MusicItem";
 
 import styles from "./index.module.css";
-import ErrorToast from "../../../components/ErrorToast";
-import useInformationPage from "../../../hooks/useInformationPage";
+import ErrorToast from "../../../Components/ErrorToast";
 
 const MusicList = () => {
     const { request, data, loading, error } = useFecth();

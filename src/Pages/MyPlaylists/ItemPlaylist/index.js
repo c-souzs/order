@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import useMedia from "../../../hooks/useMedia";
+import useMedia from "../../../Hooks/useMedia";
 
 import styles from "./index.module.css";
 

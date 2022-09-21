@@ -1,13 +1,15 @@
 import React from "react";
-import ErrorToast from "../../components/ErrorToast";
-import Loader from "../../components/Loader";
-import useFecth from "../../hooks/useFecth";
-import useInformationPage from "../../hooks/useInformationPage";
+
+import useFecth from "../../Hooks/useFecth";
+import useInformationPage from "../../Hooks/useInformationPage";
 import { GET_PLAYLISTS } from "../../services/api";
 import { UserContext } from "../../store/UserContext";
 
-import styles from "./index.module.css";
+import ErrorToast from "../../Components/ErrorToast";
+import Loader from "../../Components/Loader";
 import ItemPlayList from "./ItemPlaylist";
+
+import styles from "./index.module.css";
 
 const MyPlaylists = () => {
   const { data, error, loading, request } = useFecth();
