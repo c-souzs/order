@@ -1,66 +1,57 @@
 import React from "react";
-import { useNavigate } from "react-router";
-import Alert from "../../../Components/Alert";
-import Loader from "../../../Components/Loader";
-import useFecth from "../../../Hooks/useFecth";
+
+import useFecth from "../../../hooks/useFecth";
 import { GET_MUSICS } from "../../../services/api";
 import { PlaylistContext } from "../../../store/PlaylistContext";
+
+import Loader from "../../../components/Loader";
 import MusicItem from "../MusicItem";
+
 import styles from "./index.module.css";
+import ErrorToast from "../../../components/ErrorToast";
 
 const MusicList = () => {
-  const { request, data, loading, error } = useFecth();
-  const { setUrisSongs, dataPlaylist, editOrder, urisOrder, urisSongs } =
+    const { request, data, loading, error } = useFecth();
+    const { setUrisSongs, dataPlaylist, editOrder, urisOrder, urisSongs } =
     React.useContext(PlaylistContext);
-  const [alertInformation, setAlertInformation] = React.useState(
-    "Obs: É necessário alterar pelo menos uma música antes de finalizar."
-  );
-  const navigate = useNavigate();
-  const ids = dataPlaylist.tracks.items.map((music) => music.track.id);
-  const idsString = ids.join(",");
-  const [limit, setLimit] = React.useState(false);
 
-  React.useEffect(() => {
-    const getMusics = async () => {
-      const { url, options } = GET_MUSICS(idsString);
-      const { json } = await request(url, options);
-      const uris = json.tracks.map((music) => music.uri);
-      setUrisSongs(uris);
-    };
-    getMusics();
-  }, []);
+    const ids = dataPlaylist.tracks.items.map((music) => music.track.id);
+    const idsString = ids.join(",");
 
-  React.useEffect(() => {
-    if (urisSongs !== null) {
-      if (urisOrder.length > 0) {
-        setAlertInformation(
-          "Músicas já adicionadas apresentam um brilho menor, basta clicar novamente para remove-lá da orderm"
-        );
+    const [information, setInformation] = React.useState(null);
+    const [limit, setLimit] = React.useState(false);
+
+    /* Busca as músicas da playlist */
+    React.useEffect(() => {
+      const getMusics = async () => {
+        const { url, options } = GET_MUSICS(idsString);
+        const { json } = await request(url, options);
+        const uris = json.tracks.map((music) => music.uri);
+        setUrisSongs(uris);
+      };
+      getMusics();
+    }, [idsString, request, setUrisSongs]);
+
+    /* Baseado no status da ordenação é alterado a frase para orientar o usuário */
+    React.useEffect(() => {
+      if(urisSongs && urisOrder){
+        if(!urisOrder.length) setInformation('Lembre-se, é necessário alterar pelo menos uma música antes de finalizar.')
+        else if(urisOrder.length === urisSongs.length) {
+          setInformation(`Todas as músicas foram posicionadas. Finalize a alteração ou cancele.`);
+          setLimit(true);
+        }
+        else setInformation(`Lembre-se, músicas já posicionadas apresentam um brilho menor, para remove-lá da lista basta clicar novamente.`);
       }
-      if (urisOrder.length <= urisSongs.length) {
-        setLimit(false);
-      } else {
-        setLimit(true);
-        setAlertInformation(
-          "Todas as músicas já foram ordenadas. Finalize ou remova alguma música para continuar."
-        );
-      }
-    }
-  }, [urisSongs, urisOrder]);
+    }, [urisSongs, urisOrder]);
 
-  if (error) {
-    navigate("/my-playlists");
-    return <Alert error={error} type='error'/>;
-  } else if (loading) <Loader />;
-  else if (data)
     return (
       <div
-        className={`container ${styles.customContainer} ${
+        className={`${styles.customContainer} ${
           editOrder ? styles.edit : styles.noEdit
         }`}
       >
-        <p className={styles.alertInformation}>{alertInformation}</p>
-        {data?.tracks.map((music) => {
+        <p className={styles.alertInformation}>{information}</p>
+        {data && data.tracks.map((music) => {
           const singer = music.artists[0].name;
           const img = music.album.images[0].url;
           const nameMusic = music.name;
@@ -68,7 +59,6 @@ const MusicList = () => {
             <MusicItem
               key={music.id}
               uri={music.uri}
-              id={music.id}
               img={img}
               name={nameMusic}
               singer={singer}
@@ -76,9 +66,13 @@ const MusicList = () => {
             />
           );
         })}
+        {loading && <Loader />}
+        <ErrorToast 
+          show={error}
+          message='Erro ao buscar as músicas dessa playlist. Tente mais tarde.'
+        />
       </div>
     );
-  else return null;
 };
 
 export default MusicList;

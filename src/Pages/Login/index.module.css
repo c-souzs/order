@@ -1,51 +1,41 @@
-.login{
-    width: 100%;
-    height: calc(100vh - 60px);
+.login {
+  width: 100%;
+  height: calc(100vh - 60px);
 }
 
-.login, .content, .content button{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.login,
+.content,
+.content button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.phrase{
-    font-weight: 400;
-    font-size: 1rem;
-    margin-bottom: 1.875rem;
+.phrase {
+  font-weight: 400;
+  font-size: 1.125rem;
+  margin-bottom: 1.5rem;
 }
 
-.content button{
-    flex-direction: row;
-    gap: .625rem;
-    background-color: #3F51B5;
-    transition: .3s;
+.content button {
+  flex-direction: row;
+  gap: 0.625rem;
+  background-color: #3f51b5;
+  transition: 0.3s;
 }
 
-.content button:hover{
-    background-color: #3649AE;
+.content button:hover {
+  background-color: #3649ae;
 }
 
-.content button img{
-    width: 20px;
-    height: 20px;
+.content button img {
+  width: 20px;
+  height: 20px;
 }
 
-.error{
-    font-size: 1rem;
-    color: #e54;
-    margin-top: 10px;
-}
-
-.backgroundLoader{
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, .4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+@media (max-width: 600px) {
+  .login {
+    height: calc(100vh - 95px);
+  }
 }

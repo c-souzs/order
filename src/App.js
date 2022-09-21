@@ -1,17 +1,19 @@
 import React from "react";
 import { Route, Routes } from "react-router";
 import "./App.css";
-import Footer from "./Components/Footer";
-import Header from "./Components/Header";
-import Login from "./Pages/Login";
-import RouteProtection from "./Pages/MyPlaylists/RouteProtection";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import Login from "./pages/Login";
+import RouteProtection from "./pages/MyPlaylists/RouteProtection";
+import Playlist from "./pages/Playlist";
+import { PlaylistStorage } from "./store/PlaylistContext";
 import { UserContext } from "./store/UserContext";
 
 function App() {
   const { hash } = window.location;
   const { logar } = React.useContext(UserContext);
 
-  // Salva o token no localStorage
+  /* Salva no local storage informações para o login do usuário */
   const saveToken = (paramsInUrl) => {
     const paramsSplitUp = paramsInUrl.reduce((accumulater, currentValue) => {
       const [key, value] = currentValue.split("=");
@@ -26,23 +28,38 @@ function App() {
     localStorage.setItem("expiresIn", expires_in);
   };
 
-  // Verifica se há algum token para ser pego na url
-  const checkTokenUrl = () => {
+  /* Verifica se tem alguma informação útil no local storage*/
+  const checkTokenLocalStorage = React.useCallback(() => {
+    const tokenType = localStorage.getItem('tokenType');
+    const accessToken = localStorage.getItem('accessToken');
+    const expiresIn = localStorage.getItem('expiresIn');
+
+    return tokenType && accessToken && expiresIn ? true : false;
+  }, []);
+
+  /* Verifica se tem alguma informação útil para o login na url */
+  const checkTokenUrl = React.useCallback(() => {
     const stringAfterHashtag = hash.substring(1);
     const params = stringAfterHashtag.split("&");
-
+  
     const haveToken = hash.includes("access_token");
-
+  
     if (haveToken) {
       saveToken(params);
       return true;
     } else {
       return false;
     }
-  };
+  }, [hash]);
 
+  /* 
+    Monitora a url do site, caso tenha alguma mudança ele verifica as informações necessária e faz o login 
+    Responsável por fazer o login automático
+
+    Problema de loop nas dependências
+  */  
   React.useEffect(() => {
-    if(checkTokenUrl()) logar();
+    if(checkTokenUrl() || checkTokenLocalStorage()) logar();
   }, [hash]);
 
   return (
@@ -50,7 +67,12 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/my-playlists/*" element={<RouteProtection />} />
+        <Route path="/my-playlists" element={<RouteProtection />} />
+        <Route path="/playlist/:id" element={
+          <PlaylistStorage>
+            <Playlist />
+          </PlaylistStorage>
+        }/>
       </Routes>
       <Footer />
     </>

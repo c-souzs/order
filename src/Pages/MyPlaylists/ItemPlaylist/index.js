@@ -1,25 +1,21 @@
 import React from "react";
-import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
+import useMedia from "../../../hooks/useMedia";
+
 import styles from "./index.module.css";
 
 const ItemPlayList = ({ id, name, images }) => {
-  const navigate = useNavigate();
-
+  const mobile = useMedia('(max-width: 600px)');
+  
   return (
-    <div
+    <li
       className={styles.playlist}
-      onClick={() => navigate(`playlist/${id}`)}
     >
-      <div className={styles.contentDecoration}>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <div className={styles.content}>
-        <h3>{name.length >= 18 ? `${name.substring(0, 14)} ...` : name.substring(0, 18) }</h3>
-        <img src={images[0].url} alt={name} />
-      </div>
-    </div>
+      <Link to={`/playlist/${id}`} className={styles.containerLink}>
+        <h3 className={styles.namePlaylist}>{mobile ? name : `${name.split(' ')[0]} ...`}</h3>
+        <img src={images[0].url} alt={name} className={styles.bannerPlaylist}/>
+      </Link>
+    </li>
   );
 };
 

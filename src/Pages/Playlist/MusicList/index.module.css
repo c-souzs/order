@@ -1,27 +1,34 @@
-.customContainer{
-    display: grid;
-    gap: 30px;
-    grid-template-columns: repeat(auto-fit, minmax(175px, 225px));
-    justify-content: center;
-    padding-bottom: 30px;
+.customContainer {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(175px, 225px));
+  justify-content: center;
+  padding-bottom: 2rem;
 }
 
-.edit > div{
-    cursor: pointer;
+.edit > div {
+  cursor: pointer;
 }
 
-.noEdit > div{
-    cursor: auto;
+.noEdit > div {
+  cursor: auto;
 }
 
-.noEdit > div:hover{
-    background-color: initial;
+.noEdit > div:hover {
+  background-color: initial;
 }
 
-.alertInformation{
-    font-family: 'Montserrat', sans-serif;
-    font-size: 18px;
-    margin-top: 5px;
-    text-align: center;
-    grid-column: 1/-1;
+.alertInformation {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.125rem;
+  margin-top: 0.25rem;
+  text-align: center;
+  grid-column: 1/-1;
+}
+
+@media (max-width: 600px) {
+  .customContainer {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 0;
+  }
 }

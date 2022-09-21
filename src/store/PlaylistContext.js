@@ -1,6 +1,4 @@
 import React from "react";
-import useFecth from "../Hooks/useFecth";
-import { PUT_ORDER_PLAYLIST } from "../services/api";
 
 export const PlaylistContext = React.createContext();
 

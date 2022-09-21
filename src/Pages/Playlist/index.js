@@ -1,34 +1,49 @@
 import React from "react";
-import { useParams } from "react-router";
-import Loader from "../../Components/Loader";
-import useFecth from "../../Hooks/useFecth";
+import { useNavigate, useParams } from "react-router";
+
+import useFecth from "../../hooks/useFecth";
 import { GET_PLAYLIST } from "../../services/api";
 import { PlaylistContext } from "../../store/PlaylistContext";
+
 import Header from "./Header";
+import Loader from "../../components/Loader";
 import Information from "./Information";
 import MusicList from "./MusicList";
 
-const Playlist = () => {
-  const params = useParams();
-  const { request, data, error, loading } = useFecth();
-  const {setDataPlaylist} = React.useContext(PlaylistContext);
+import styles from './index.module.css';
+import { UserContext } from "../../store/UserContext";
 
+const Playlist = () => {
+  const { id } = useParams();
+  const { request, data, error, loading } = useFecth();
+  const { setDataPlaylist } = React.useContext(PlaylistContext);
+  const { online } = React.useContext(UserContext);
+  const navigate = useNavigate();
+
+  /* Busca as músicas daquela playlist */
   React.useEffect(() => {
     const getMusics = async () => {
-      const idPlaylist = params.id;
-      const { url, options } = GET_PLAYLIST(idPlaylist);
+      const { url, options } = GET_PLAYLIST(id);
       const { json } = await request(url, options);
       setDataPlaylist(json)
     };
     getMusics();
-  }, [params.id, request, setDataPlaylist]);
+  }, [id, request, setDataPlaylist]);
 
-  if (loading || !data) return <Loader />;
+  React.useEffect(() => {
+    if(!online) navigate('/');
+  }, [online, navigate]);
+
   return (
-    <section>
-      <Header />
-      <Information />
-      <MusicList />
+    <section className={styles.dataPlaylist}>
+      {data && error === null && (
+        <>
+          <Header />
+          <Information />
+          <MusicList />
+        </>
+      )}
+      {loading && <Loader />}
     </section>
   );
 };

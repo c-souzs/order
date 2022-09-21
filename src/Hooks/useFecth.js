@@ -16,7 +16,15 @@ const useFecth = () => {
 
             response = await fetch(url, options);
             json = await response.json();
-
+                /* 
+                    Caso retorne um erro esse será seu formato
+                    {
+                        "error": {
+                            "status": 401,
+                            "message": "No token provided"
+                        }
+                    }
+                */
             if(!response.ok) throw new Error(json.message);
         } catch (e) {
             json = null;

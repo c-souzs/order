@@ -1,50 +1,44 @@
 import React from "react";
-import { Route, Routes } from "react-router";
-import Loader from "../../Components/Loader";
-import useFecth from "../../Hooks/useFecth";
+import ErrorToast from "../../components/ErrorToast";
+import Loader from "../../components/Loader";
+import useFecth from "../../hooks/useFecth";
 import { GET_PLAYLISTS } from "../../services/api";
 import { UserContext } from "../../store/UserContext";
-import Playlist from "../Playlist";
-import ListPlaylist from "./ListPlaylist";
+
 import styles from "./index.module.css";
-import { PlaylistStorage } from "../../store/PlaylistContext";
-import Alert from "../../Components/Alert";
+import ItemPlayList from "./ItemPlaylist";
 
 const MyPlaylists = () => {
+  const { data, error, loading, request } = useFecth();
   const ctx = React.useContext(UserContext);
-  const { request, data, error, loading } = useFecth();
 
+  /*Busca as playlist do usuário*/
   React.useEffect(() => {
     const dataPlaylists = async () => {
       const { url, options } = GET_PLAYLISTS(ctx.data.id);
       await request(url, options);
     };
     dataPlaylists();
-  }, []);
+  }, [ctx.data.id, request]);
 
-  if (loading)
-    return (
-      <div className={`container ${styles.customContainer}`}>
-        {" "}
-        <Loader />{" "}
+  return (
+    <section className={styles.sectionHigher}>
+      <div className="container">
+        <h1 className={styles.titlePlaylist}>Suas playlists</h1>
+        <ul className={styles.containerPlaylist}>
+          {data &&
+            data.items.map(({ id, name, images }) => (
+              <ItemPlayList key={id} id={id} name={name} images={images} />
+            ))}
+        </ul>
       </div>
-    );
-  else if (error) return <Alert type='error' message={error} />;
-  else if (data)
-    return (
-      <Routes>
-        <Route path="/" element={<ListPlaylist data={data} />} />
-        <Route
-          path="/playlist/:id"
-          element={
-            <PlaylistStorage>
-              <Playlist />
-            </PlaylistStorage>
-          }
-        />
-      </Routes>
-    );
-  else return null;
+      {loading && <Loader />}
+      <ErrorToast 
+        show={error}
+        message="Erro ao buscar suas playLists. Tente mais tarde."
+      />
+    </section>
+  )
 };
 
 export default MyPlaylists;

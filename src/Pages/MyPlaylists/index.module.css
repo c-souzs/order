@@ -1,12 +1,32 @@
-.error{
-    font-family: 'Roboto', sans-serif;
-    font-size: 24px;
-    color: #e54;
+.sectionHigher {
+  min-height: 80vh;
+  padding: 1.875rem 0;
 }
 
-.customContainer{
-    padding: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.titlePlaylist {
+  font-family: "Montserrat", sans-serif;
+  font-size: 2.625rem;
+  font-weight: 600;
+  padding-bottom: 1.875rem;
+}
+
+.containerPlaylist {
+  display: grid;
+  gap: 1.875rem;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+@media (max-width: 860px) {
+  .sectionHigher {
+    padding: 1.875rem;
+  }
+  .containerPlaylist {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .containerPlaylist {
+    grid-template-columns: 1fr;
+  }
 }

@@ -1,27 +1,39 @@
-.content{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-    font-size: 18px;
-    color: #9e9e9e;
+  font-size: 1rem;
+  color: #9e9e9e;
 
-    padding: 15px 10px;
+  padding: 1rem;
 }
 
-.content a {
-    color: #242424;
+.githubLink {
+  transition: 0.3s;
+  color: #9e9e9e;
 }
 
-.social{
-    display: flex;
-    gap: 24px;
+.githubLink:hover {
+  color: #fff;
 }
 
-.social svg{
-    transition: .3s;
+.social {
+  display: flex;
+  gap: 1.5rem;
 }
 
-.social svg:hover{
-    fill: #242424;
+.social svg {
+  transition: 0.3s;
+}
+
+.social svg:hover {
+  fill: #fff;
+}
+
+@media (max-width: 600px) {
+  .footer {
+    flex-direction: column-reverse;
+    gap: 1rem;
+  }
 }

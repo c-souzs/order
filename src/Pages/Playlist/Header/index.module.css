@@ -1,36 +1,49 @@
-.header{
-    background-color: #111;
+.containerHeaderPlaylist {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 2rem;
+  gap: 2rem;
 }
 
-.customContainer{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 30px;
-    padding-bottom: 30px;
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
-.controls{
-    display: flex;
-    gap: 30px;
+.title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 2.625rem;
+  color: #fff;
 }
 
-.title{
-    font-family: 'Montserrat', sans-serif;
-    font-size: 32px;
-    color: #fff;
+.buttonOrder {
+  background-color: #1fcf6b;
+  transition: 0.3s;
 }
 
-.buttonOrder{
-    background-color: #1FCF6B;
+.buttonOrder:disabled {
+  background-color: #7dffb5;
+  cursor: auto;
 }
 
-.buttonOrder:disabled{
-    background-color: #7dffb5;
-    cursor: auto;
+.buttonOrder:disabled:hover {
+  background-color: #7dffb5;
+  cursor: auto;
 }
 
+.buttonOrder:hover {
+  background-color: #16c361;
+}
 
-.buttonCancelar{
-    background-color: #e54;
+.buttonCancel {
+  background-color: #e54;
+}
+
+@media (max-width: 600px) {
+  .containerHeaderPlaylist {
+    flex-direction: column;
+    align-items: start;
+  }
 }

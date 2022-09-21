@@ -1,49 +1,38 @@
-.playlist{
-    background-color: #50EF95;
-    cursor: pointer;
+.playlist {
+  background-color: #50ef95;
+  cursor: pointer;
+  border: 0.25rem solid #000;
+  border-radius: 0.125rem;
+  padding: 1rem 2rem;
 }
 
-.contentDecoration{
-    display: flex;
-    gap: 8px;
-    padding: 10px 5px;
-    border-bottom: 1px solid #000;
+.namePlaylist {
+  font-family: "Montserrat", sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #0b0b0b;
+  margin-bottom: 0.625rem;
 }
 
-.contentDecoration span{
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: #fff;
-    transition: .3s;
+.bannerPlaylist {
+  width: 100%;
+  opacity: 0.8;
+  transition: 0.3s;
+  border-radius: 0.125rem;
 }
 
-.content{
-    padding: 0 30px;
-    padding-bottom: 15px;
+.playlist:hover .bannerPlaylist {
+  opacity: 1;
 }
 
-.content h3 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 2rem;
-    line-height: 1.25;
-    font-weight: 600;
-    color: #000;
-    margin-top: 0.938rem;
-    margin-bottom: 0.625rem;
+@media (max-width: 860px) {
+  .playlist {
+    padding: 1rem;
+  }
 }
 
-.content img{
-    width: 100%;
-    height: 275px;
-    opacity: .8;
-    transition: .3s;
-}
-
-.playlist:hover img {
-    opacity: 1;
-}
-
-.playlist:hover .contentDecoration span {
-    background-color: #000;
+@media (max-width: 600px) {
+  .bannerPlaylist {
+    max-height: 300px;
+  }
 }

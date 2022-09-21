@@ -1,13 +1,15 @@
 import React from "react";
 import { Navigate } from "react-router";
-import MyPlaylists from ".";
+
 import { UserContext } from "../../store/UserContext";
 
+import MyPlaylists from ".";
+
 const RouteProtection = () => {
-  const { logado } = React.useContext(UserContext);
+  const { online } = React.useContext(UserContext);
   
-  if (logado) return <MyPlaylists />;
-  else if (logado === false) return <Navigate to="/" />;
+  if (online) return <MyPlaylists />;
+  else if (online === false) return <Navigate to="/" />;
   else return null;
 };
 
