@@ -2,6 +2,7 @@ import React from "react";
 import ErrorToast from "../../components/ErrorToast";
 import Loader from "../../components/Loader";
 import useFecth from "../../hooks/useFecth";
+import useInformationPage from "../../hooks/useInformationPage";
 import { GET_PLAYLISTS } from "../../services/api";
 import { UserContext } from "../../store/UserContext";
 
@@ -20,6 +21,11 @@ const MyPlaylists = () => {
     };
     dataPlaylists();
   }, [ctx.data.id, request]);
+
+  useInformationPage({
+    title: 'Minhas Playlists',
+    description: 'Veja suas playlists, altere como e quando quiser.'
+  });
 
   return (
     <section className={styles.sectionHigher}>

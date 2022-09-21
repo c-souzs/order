@@ -10,9 +10,15 @@ import logo from "../../assets/logo.svg";
 import iconButton from "../../assets/icon-button.svg";
 
 import styles from "./index.module.css";
+import useInformationPage from "../../hooks/useInformationPage";
 
 const Login = () => {
     const { error, loading } = React.useContext(UserContext);
+
+    useInformationPage({
+      title: 'Login',
+      description: 'Faça seu login com o spotify e alterar as músicas de suas playlists como quiser'
+    });
 
     return (
       <>

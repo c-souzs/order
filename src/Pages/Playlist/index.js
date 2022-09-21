@@ -12,11 +12,12 @@ import MusicList from "./MusicList";
 
 import styles from './index.module.css';
 import { UserContext } from "../../store/UserContext";
+import useInformationPage from "../../hooks/useInformationPage";
 
 const Playlist = () => {
   const { id } = useParams();
   const { request, data, error, loading } = useFecth();
-  const { setDataPlaylist } = React.useContext(PlaylistContext);
+  const { setDataPlaylist, dataPlaylist } = React.useContext(PlaylistContext);
   const { online } = React.useContext(UserContext);
   const navigate = useNavigate();
 
@@ -33,6 +34,11 @@ const Playlist = () => {
   React.useEffect(() => {
     if(!online) navigate('/');
   }, [online, navigate]);
+
+  useInformationPage({
+    title: dataPlaylist?.name || 'Sua playlist',
+    description: 'Aqui você pode alterar a ordem de uma playlist exclusiva.'
+  })
 
   return (
     <section className={styles.dataPlaylist}>

@@ -9,6 +9,7 @@ import MusicItem from "../MusicItem";
 
 import styles from "./index.module.css";
 import ErrorToast from "../../../components/ErrorToast";
+import useInformationPage from "../../../hooks/useInformationPage";
 
 const MusicList = () => {
     const { request, data, loading, error } = useFecth();
