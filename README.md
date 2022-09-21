@@ -11,7 +11,7 @@
 <div id="sobre">
   <h1>📎 Sobre. </h1>
   <p>O projeto Order surgiu através de uma necessidade própria de mudar a ordem das músicas de uma playlist no spotify. Com essa necessidade em mente e os conhecimentos   em react aproveitei a ideia para solucionar o problema e aplicar todos os conhecimentos adquirido nos estudos do farmework. O desenvolvimento desse sistema também envolveu um estudo único e profundo na documentação da API do spotify, pois nunca havia trabalhado com ela.</p>
-  <p>Atualmente o projeto esta <b>FINALIZADO</b> em relação as suas funcionalidade básica, entretanto tem melhorias de layout a serem feitas. Para acessar basta clicar no link: <a href="https://souzzs.github.io/order/">Order online 🎵</a>.</p>
+  <p>Atualmente o projeto esta <b>FINALIZADO</b> e online. Entretanto para utilizar o mesmo é necessário adicionar uma credencial de forma manual no painel de controle do spotify, impedindo a utilização do mesmo pela comunidade dado que o projeto é pequeno.</p>
 </div>
 
 <div id="aprendizados">
@@ -65,9 +65,9 @@
   <h1>✏️ Autor.</h1>
   <p>Desenvolvimento por <a href="https://github.com/souzzs">Caio Souza</a>.</p>
   <p>
-    <a href="https://instagram.com/seu-usuario/"><img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&amp;logo=instagram&amp;logoColor=white" alt="Instagram Badge"></a>
-    <a href="https://discord.gg/seu-server"><img src="https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&amp;logo=discord&amp;logoColor=white" alt="Discord Badge"></a>
-    <a href="https://www.linkedin.com/in/seu-usuario/"><img src="https://img.shields.io/badge/  LinkedIn-0077B5?style=for-the-badge&amp;logo=linkedin&amp;logoColor=white" alt="Linkedin"></a>
+    <a href="https://www.instagram.com/c.souzzs/"><img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&amp;logo=instagram&amp;logoColor=white" alt="Instagram Badge"></a>
+    <a href="https://discord.com/channels/@me/1022182886943760404"><img src="https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&amp;logo=discord&amp;logoColor=white" alt="Discord Badge"></a>
+    <a href="https://www.linkedin.com/in/souzzs/"><img src="https://img.shields.io/badge/  LinkedIn-0077B5?style=for-the-badge&amp;logo=linkedin&amp;logoColor=white" alt="Linkedin"></a>
   </p>
 </div>
   
