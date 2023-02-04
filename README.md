@@ -7,11 +7,10 @@
  <a href="#tecnologias">Tecnologias</a> •
  <a href="#instalacao">Instalação</a> 
 </p>
-
 <div id="sobre">
   <h1>📎 Sobre. </h1>
-  <p>O projeto Order surgiu através de uma necessidade própria de mudar a ordem das músicas de uma playlist no spotify. Com essa necessidade em mente e os conhecimentos   em react aproveitei a ideia para solucionar o problema e aplicar todos os conhecimentos adquirido nos estudos do farmework. O desenvolvimento desse sistema também envolveu um estudo único e profundo na documentação da API do spotify, pois nunca havia trabalhado com ela.</p>
-  <p>Atualmente o projeto esta <b>FINALIZADO</b> e online. Entretanto para utilizar o mesmo é necessário adicionar uma credencial de forma manual no painel de controle do spotify, impedindo a utilização do mesmo pela comunidade dado que o projeto é pequeno.</p>
+  <p>O projeto Order nasceu da necessidade de mudar a ordem das músicas em uma playlist no Spotify. Aproveitando meus conhecimentos em React, eu usei essa ideia para resolver o problema e aplicar os conhecimentos adquiridos em meus estudos sobre o framework. O desenvolvimento do sistema também exigiu um estudo profundo da API do Spotify, já que eu nunca tinha trabalhado com ela antes.</p>
+  <p>Atualmente, o projeto está <b>FINALIZADO</b> e disponível online. No entanto, para usá-lo, é necessário adicionar uma credencial manualmente no painel de controle do Spotify, o que impede sua utilização pela comunidade, pois o projeto é pequeno.</p>
 </div>
 
 <div id="aprendizados">
@@ -40,37 +39,34 @@
   <ul>
     <li>
       <p>Clone o projeto e acesse a pasta do mesmo.</p>
-      <code>
-          $ git clone https://github.com/souzzs/order.git
-      </code>
+      <code> $ git clone https://github.com/souzzs/order.git </code>
     </li>
     <li>
       <p>Instale as dependências</p>
-      <code>
-          $ npm install
-      </code>
+      <code> $ npm install </code>
     </li>
     <li>
       <p>Inicie o projeto</p>
-      <code>
-          $ npm start
-      </code>
+      <code> $ npm start </code>
     </li>
   </ul>
   <p><em>Ps: É necessário configurar o arquivo services/api.js, mudando o CLIENT_ID e REDIRECT_URL_AFTER_LOGIN. Para o uso da api é obrigatório uma configuração
     na dashboard do spotify, <a href="https://developer.spotify.com/dashboard/login">link aqui</a>.</em></p>
 </div>
-  
-<div id="autor">
+ <div id="autor">
   <h1>✏️ Autor.</h1>
   <p>Desenvolvimento por <a href="https://github.com/souzzs">Caio Souza</a>.</p>
-  <p>
-    <a href="https://www.instagram.com/c.souzzs/"><img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&amp;logo=instagram&amp;logoColor=white" alt="Instagram Badge"></a>
-    <a href="https://discord.com/channels/@me/1022182886943760404"><img src="https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&amp;logo=discord&amp;logoColor=white" alt="Discord Badge"></a>
-    <a href="https://www.linkedin.com/in/souzzs/"><img src="https://img.shields.io/badge/  LinkedIn-0077B5?style=for-the-badge&amp;logo=linkedin&amp;logoColor=white" alt="Linkedin"></a>
+  <a href="https://www.linkedin.com/in/souzzs/" target="_blank">
+    <img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white">
+  </a>
+  <a href="mailto:souzsdev@gmail.com" target="_blank">
+    <img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white">
+  </a>
+  <a href="https://discord.gg/BsnqGK6e" target="_blank">
+    <img src="https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white">
+  </a>
   </p>
 </div>
-  
 <div id='licenca'>
   <h1>🔖 Licença.</h1>
   <p><a href="/LICENSE"><img src="https://img.shields.io/badge/MIT License-E58080?style=for-the-badge&amp;logo=bookstack&amp;logoColor=white" alt="LICENSA"></a></p>
